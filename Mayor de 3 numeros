@@ -1,0 +1,29 @@
+// Compara.cpp : Defines the entry point for the console application.
+//comentarios 
+
+#include "stdafx.h"
+#include <iostream>
+#include"conio.h"
+using namespace std;
+void main ()
+{
+	int a,b,c, mayor;
+	cout<< "ingrese a: \n";
+	cin>> a;
+	cout<<"ingrese b: \n";
+	cin>> b;
+	cout<<"ingrese c: \n";
+	cin>> c;
+	if (a>b)
+		if(a>c)
+			mayor=a;
+		else 
+			mayor=c;
+	else 
+		if (b>c)
+			mayor=b;
+		else
+			mayor=c;
+	cout<< "El Mayor es: "<<mayor;
+	getch();
+}
