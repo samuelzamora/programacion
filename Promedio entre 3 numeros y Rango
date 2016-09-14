@@ -1,0 +1,40 @@
+// promedio.cpp : Defines the entry point for the console application.
+//
+
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+using namespace std;
+void main () 
+{
+	int a,b,c,prom;
+	cout<< "Ingresar a: ";
+	cin>> a;
+	cout<< "Ingresar b: ";
+	cin>> b;
+	cout<< "Ingresar c: ";
+	cin>> c;
+
+	if (!((a>0) && (a<=10)))
+	{
+		cout<< a<< " No esta en el rango \n";
+	}
+	if (!((b>0) && (b<=10)))
+	{
+		cout<< b<< " No esta en el rango \n";
+	}
+		
+	if (!((c>0) && (c<=10)))
+	{
+		cout<< c<< " No esta en el rango \n";
+	}
+    if ((a>0 && a<=10) && (b>0 && b<=10) && (c>0 && c<=10))
+	{
+		prom<-((a+b+c)/3);
+	    cout<< "El promedio es" << prom;
+	}
+		getch ();
+
+}
+
