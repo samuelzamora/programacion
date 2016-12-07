@@ -1,0 +1,303 @@
+// papis.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include "stdlib.h" // para vaciar pantallla con system
+#define MAX 100
+using namespace std; 
+
+void armarhamburguesa (float a[],float vegetales[],int &contvege);
+void elegirmenu();
+void presentarhamburguesa(float a[], float vegetales[], int contvege);
+void segundacarne(float a[]);
+
+void main ()
+{	
+	float a[MAX], vegetales[MAX];
+	int opcion0,contvege=0;
+	cout <<"Bienvenido a Daddy's Burger \n";
+	cout <<"Usted puede armar su hamburguesa al gusto! o si gusta elegir de nuestro menu:\n";
+	cout <<"1. Armar mi Hamburguesa \n";
+	cout <<"2. Elegir del menu \n";
+	cin>>opcion0;
+			while(opcion0<0||opcion0>2)
+			{	 cout<<"Ingrese un numero valido del menu o ingrese 0 para salir:"<<endl;
+				 cin>>opcion0;
+			}
+	switch (opcion0)
+	{
+	case 1 : {
+				armarhamburguesa(a,vegetales,contvege);
+				system("cls");
+				break;
+			 }
+
+	case 2: {
+				elegirmenu();
+				system("cls");
+				break;
+			}
+	default: cout << "Eligio salir" << endl;
+	}
+_getch();
+}
+void elegirmenu()
+{
+	cout<<"Contamos con 4 Exquisitas Daddy's Burguer"<<endl;
+	cout<<"1. BBQ Daddy's Burguer"<<endl;
+	cout<<"  -PAN Clasico Crunch\n  -Carne 100% Cuadril de 200gr\n  -Cebollas Caramelizadas\n  -Rodajas de Tomate Deshidratado\n  -Lechuga Verde\n  -Salsa Barbeque de la casa\n  -Papitas y Soda"<<endl<<endl;
+	cout<<"2. Chiken Club Daddy's Burguer"<<endl;
+	cout<<"  -Pan Clasico Crunch\n  -Carne 100% Pechuga de pollo 200gr\n  -Rodajas de Tomate Deshidratado\n  -Lechuga Verde\n  -Aros de Cebolla Caramelizados\n  -Salsa de Miel y Mostaza\n  -Papitas y Soda"<<endl;
+	cout<<"3. Clasica Daddy's Burguer"<<endl;
+	cout<<"  -Pan Clasico Crunch\n  -Carne 100% Cuadril 200gr\n  -Rodajas de Tomate\n  -Lechuga Verde\n  -Cebolla blanda\n  -Salsa Golf\n  -Papitas y Soda"<<endl;
+	cout<<"4. ";
+	_getch();
+}
+void armarhamburguesa (float a[],float vegetales[],int &contvege)
+{
+	int opcion,carne,pollo,pan,vegetaln=0,aux0,aux1=0,extra;
+	cout<<"Cual de nuestras carnes gustaria?"<<endl;
+	cout<<"1. Carne 100% Cuadril (100g, 200g, 300g)"<<endl;
+	cout<<"2. Carne 100% Pechuga Pollo (100g, 200g, 300g)"<<endl;
+	cout<<"3. Carne 100% Surubi (150g)"<<endl;
+	cin>>opcion;
+			while(opcion<0||opcion>=4)
+			{	 cout<<"Ingrese un numero valido del menu o ingrese 0 para salir:"<<endl;
+				 cin>>opcion;
+			}
+	switch (opcion)
+	{
+	case 1:
+		{
+		cout<<"De cuantos gramos su Carne de Res 100% Cuadril?"<<endl;
+			cout<<"1. 100gr"<<endl;
+			cout<<"2. 200gr"<<endl;
+			cout<<"3. 300gr"<<endl;
+			cin>>carne;
+			switch (carne)
+			{
+			case 1: a[0]=1; system("cls"); break; // primer numero refiere a la primer pregunta, segundo numero se refiere a la eleccion.
+			case 2: a[0]=2; system("cls"); break;
+			case 3: a[0]=3; system("cls"); break;
+			}
+			break;
+		}
+	case 2: {
+			cout<<"De cuantos gramos su Carne 100% Pechuga de Pollo?"<<endl;
+			cout<<"1. 100gr"<<endl;
+			cout<<"2. 200gr"<<endl;
+			cout<<"3. 300gr"<<endl;
+			cin>>pollo;
+				switch (pollo)
+				{
+				case 1: a[0]=4; system("cls"); break; // primer numero refiere a la primer pregunta, segundo numero se refiere a la eleccion.
+				case 2: a[0]=5; system("cls"); break;
+				case 3: a[0]=6; system("cls"); break;
+				}
+			break;
+			}
+	case 3: {
+			 a[0]=7; system("cls"); break;
+			}
+
+	}
+	cout<<"Desea agregar otra carne?\n1. Si\n2.No\n";
+	cin>>extra;
+			while(extra<1||extra>2)
+			{	 cout<<"Ingrese 1 si desea otra carne, caso contrario 0."<<endl;
+				 cin>>extra;
+			}
+	if (extra==1) segundacarne(a);
+	if (extra==0) a[1]=0;
+	cout<<"Con que pan gustaria disfrutar?"<<endl;
+	cout<<"1. Integral Crunch"<<endl;
+	cout<<"2. Integral Normal"<<endl;
+	cout<<"3. Clasico Crunch"<<endl;
+	cout<<"4. Clasico Normal"<<endl;
+	cin>>pan;
+			while(pan<0||pan>4)
+			{	 cout<<"Ingrese un numero valido del menu o ingrese 0 para salir:"<<endl;
+				 cin>>opcion;
+			}
+	switch (pan)
+	{
+	case 1: a[2]=1; break;
+	case 2: a[2]=2; break;
+	case 3: a[2]=3; break;
+	case 4: a[2]=4; break;
+	}
+	
+	cout<<endl<<"Tenemos una variedad de piezas a elegir, como tambien especialidades de la casa"<<endl;
+	cout<<"Escriba numero de la pieza que desea, puede elegir hasta 6 piezas, cuando este satisfecho ingrese 0."<<endl;
+	cout<<"1.Tomate Normal\n2.Tomate Deshidratado\n3.Lechuga Verde C\n4.Lechuga  MoradaA\n5.Pepinillos \n6.Cebolla Caramelizada\n7.Cebolla  Normal \n8.Papitas Crunch\n0.No deseo elegir mas."<<endl;
+	cout<<endl<<"Deseo la pieza:";
+	cin>>vegetaln;
+			while(vegetaln<0||vegetaln>10)
+			{	 cout<<"Ingrese un numero valido del menu:"<<endl;
+				 cin>>vegetaln;
+			}
+	vegetales[aux1]=vegetaln; // cargamos el primer espacio del vector, vegetales[0] ya sea con un una pieza o con el rechazo a agregar piezas, lo intepreta como que no quiere vegetales.
+	while (!(vegetaln==0)) // mientras no se escriba 0, se ira cargando el vector de posicion 1 hasta posicion 5, por que lineas atras ya cargamos el primer espacio.(6 espacios)
+	{
+			aux1=aux1+1;
+			cout<<"Siguiente pieza?: ";
+			cin>>vegetaln;
+				while(vegetaln<0||vegetaln>10)
+				{	 cout<<"Ingrese un numero valido del menu:"<<endl;
+					 cin>>vegetaln;
+				}
+			vegetales[aux1]=vegetaln;
+	}
+	cout<<"Terminamos, habiendo elegido "<<aux1<<" piezas.";
+
+	while (!(aux1==6)) // si aux1 no llego a 6 (espacios disponibles para piezas) terminara de cargar el vector vegetales con 0 que significan vacios.
+	{
+		aux1=aux1+1;
+		vegetales[aux1]=0;
+	}
+
+	_getch();
+	system("cls");
+	presentarhamburguesa(a, vegetales, contvege);
+}
+
+void presentarhamburguesa(float a[], float vegetales[], int contvege)
+{
+	cout<<endl<<endl<<endl;
+	cout<<"Su Hamburguesa Papis Burguer constara de:"<<endl;
+	
+	if (a[2]==1) {cout<<"Pan Integral Crunch"<<endl;}
+	if (a[2]==2) {cout<<"Pan Integral Normal"<<endl;}
+	if (a[2]==3) {cout<<"Pan Clasico Crunch"<<endl;}
+	if (a[2]==4) {cout<<"Pan Clasico Normal"<<endl<<endl;}
+
+	if (a[0]==1) {cout<<"1 Carne de 100% Cuadril, 100g"<<endl;}
+	if (a[0]==2) {cout<<"1 Carne de 100% Cuadril, 200g"<<endl;}
+	if (a[0]==3) {cout<<"1 Carne de 100% Cuadril, 300g"<<endl;}
+	if (a[0]==4) {cout<<"1 Carne de pollo de 100g"<<endl;}
+	if (a[0]==5) {cout<<"1 Carne de pollo de 200g"<<endl;}
+	if (a[0]==6) {cout<<"1 Carne de pollo de 300g"<<endl;}
+	if (a[0]==7) {cout<<"1 Filete de Suribi de 150g"<<endl;}
+	
+	
+	if (a[1]==0) {cout<<endl;}
+	if (a[1]==1) {cout<<"1 Carne de 100% Cuadril, 100g"<<endl;}
+	if (a[1]==2) {cout<<"1 Carne de 100% Cuadril, 200g"<<endl;}
+	if (a[1]==3) {cout<<"1 Carne de 100% Cuadril, 300g"<<endl;}
+	if (a[1]==4) {cout<<"Carne de pollo de 100g\n"<<endl;}
+	if (a[1]==5) {cout<<"Carne de pollo de 200g\n"<<endl;}
+	if (a[1]==6) {cout<<"Carne de pollo de 300g\n"<<endl;}
+	if (a[1]==7) {cout<<"Filete de Suribi de 150g\n"<<endl<<endl;}
+	
+	
+	if (vegetales[0]==0) {cout<<"Sin Vegetales"<<endl;}
+	if (vegetales[0]==1) {cout<<"Tomate Normal"<<endl;}
+	if (vegetales[0]==2) {cout<<"Tomate Deshidratado"<<endl;}
+	if (vegetales[0]==3) {cout<<"Lechuga Verde"<<endl;}
+	if (vegetales[0]==4) {cout<<"Lechuga Morada"<<endl;}
+	if (vegetales[0]==5) cout<<"Pepinillos"<<endl;
+	if (vegetales[0]==6) cout<<"Cebolla Caramelizada"<<endl;
+	if (vegetales[0]==7) cout<<"Cebolla Normal"<<endl;
+	if (vegetales[0]==8) cout<<"Papitas Crunch"<<endl;
+	
+	if (vegetales[1]==0) cout<<endl;
+	if (vegetales[1]==1) cout<<"Tomate Normal"<<endl;
+	if (vegetales[1]==2) cout<<"Tomate Deshidratado"<<endl;
+	if (vegetales[1]==3) cout<<"Lechuga Verde"<<endl;
+	if (vegetales[1]==4) cout<<"Lechuga Morada"<<endl;
+	if (vegetales[1]==5) cout<<"Pepinillos"<<endl;
+	if (vegetales[1]==6) cout<<"Cebolla Caramelizada"<<endl;
+	if (vegetales[1]==7) cout<<"Cebolla Normal"<<endl;
+	if (vegetales[1]==8) cout<<"Papitas Crunch"<<endl;
+	
+	if (vegetales[2]==0) cout<<endl;
+	if (vegetales[2]==1) cout<<"Tomate Normal"<<endl;
+	if (vegetales[2]==2) cout<<"Tomate Deshidratado"<<endl;
+	if (vegetales[2]==3) cout<<"Lechuga Verde"<<endl;
+	if (vegetales[2]==4) cout<<"Lechuga Morada"<<endl;
+	if (vegetales[2]==5) cout<<"Pepinillos"<<endl;
+	if (vegetales[2]==6) cout<<"Cebolla Caramelizada"<<endl;
+	if (vegetales[2]==7) cout<<"Cebolla Normal"<<endl;
+	if (vegetales[2]==8) cout<<"Papitas Crunch"<<endl;
+	
+	if (vegetales[3]==0) cout<<endl;
+	if (vegetales[3]==1) cout<<"Tomate Normal"<<endl;
+	if (vegetales[3]==2) cout<<"Tomate Deshidratado"<<endl;
+	if (vegetales[3]==3) cout<<"Lechuga Verde"<<endl;
+	if (vegetales[3]==4) cout<<"Lechuga Morada"<<endl;
+	if (vegetales[3]==5) cout<<"Pepinillos"<<endl;
+	if (vegetales[3]==6) cout<<"Cebolla Caramelizada"<<endl;
+	if (vegetales[3]==7) cout<<"Cebolla Normal"<<endl;
+	if (vegetales[3]==8) cout<<"Papitas Crunch"<<endl;
+	
+	if (vegetales[4]==0) cout<<endl;
+	if (vegetales[4]==1) cout<<"Tomate Normal"<<endl;
+	if (vegetales[4]==2) cout<<"Tomate Deshidratado"<<endl;
+	if (vegetales[4]==3) cout<<"Lechuga Verde"<<endl;
+	if (vegetales[4]==4) cout<<"Lechuga Morada"<<endl;
+	if (vegetales[4]==5) cout<<"Pepinillos"<<endl;
+	if (vegetales[4]==6) cout<<"Cebolla Caramelizada"<<endl;
+	if (vegetales[4]==7) cout<<"Cebolla Normal"<<endl;
+	if (vegetales[4]==8) cout<<"Papitas Crunch"<<endl;
+	
+	if (vegetales[5]==0) cout<<endl;
+	if (vegetales[5]==1) cout<<"Tomate Normal"<<endl;
+	if (vegetales[5]==2) cout<<"Tomate Deshidratado"<<endl;
+	if (vegetales[5]==3) cout<<"Lechuga Verde"<<endl;
+	if (vegetales[5]==4) cout<<"Lechuga Morada"<<endl;
+	if (vegetales[5]==5) cout<<"Pepinillos"<<endl;
+	if (vegetales[5]==6) cout<<"Cebolla Caramelizada"<<endl;
+	if (vegetales[5]==7) cout<<"Cebolla Normal"<<endl;
+	if (vegetales[5]==8) cout<<"Papitas Crunch"<<endl;
+
+	_getch();
+}
+void segundacarne (float a[])
+{
+	int opcion,carne,pollo,pan,vegetaln=0,aux0,aux1=0,extra;
+	cout<<"Cual de nuestras carnes gustaria?"<<endl;
+	cout<<"1. Carne 100% Cuadril (100g, 200g, 300g)"<<endl;
+	cout<<"2. Carne 100% Pechuga Pollo (100g, 200g, 300g)"<<endl;
+	cout<<"3. Carne 100% Surubi (150g)"<<endl;
+	cin>>opcion;
+			while(opcion<0||opcion>=4)
+			{	 cout<<"Ingrese un numero valido del menu o ingrese 0 para salir:"<<endl;
+				 cin>>opcion;
+			}
+	switch (opcion)
+	{
+	case 1:
+		{
+		cout<<"De cuantos gramos su Carne de Res 100% Cuadril?"<<endl;
+			cout<<"1. 100gr"<<endl;
+			cout<<"2. 200gr"<<endl;
+			cout<<"3. 300gr"<<endl;
+			cin>>carne;
+			switch (carne)
+			{
+			case 1: a[0]=1; system("cls"); break; // primer numero refiere a la primer pregunta, segundo numero se refiere a la eleccion.
+			case 2: a[0]=2; system("cls"); break;
+			case 3: a[0]=3; system("cls"); break;
+			}
+			break;
+		}
+	case 2: {
+			cout<<"De cuantos gramos su Carne 100% Pechuga de Pollo?"<<endl;
+			cout<<"1. 100gr"<<endl;
+			cout<<"2. 200gr"<<endl;
+			cout<<"3. 300gr"<<endl;
+			cin>>pollo;
+				switch (pollo)
+				{
+				case 1: {a[1]=4; system("cls"); break;}
+				case 2: {a[1]=5; system("cls"); break;}
+				case 3: {a[1]=6; system("cls"); break;}
+				}
+			break;
+			}
+	case 3: {a[1]=7; system("cls"); break;}
+
+	}
+}
